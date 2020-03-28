@@ -20,8 +20,11 @@ class RichAppPage extends StatefulWidget{
 }
 class _RichAppState extends State<RichAppPage>{
   final _minimumPadding = 5.0;
+
+  get textStyle => null;
   @override
   Widget build(BuildContext context) {
+    TextStyle textStyle = Theme.of(context).textTheme.title;
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
@@ -36,9 +39,11 @@ class _RichAppState extends State<RichAppPage>{
               padding : EdgeInsets.only(top:_minimumPadding , bottom: _minimumPadding),
               child: TextField(
                 keyboardType: TextInputType.number,
+                style: textStyle,
                 decoration: InputDecoration(
                     labelText: '주거비',
                     hintText: '주거비 e.g. 2000000',
+                    labelStyle: textStyle,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0)
                     )
@@ -49,9 +54,11 @@ class _RichAppState extends State<RichAppPage>{
               padding : EdgeInsets.only(top:_minimumPadding , bottom: _minimumPadding),
               child: TextField(
                 keyboardType: TextInputType.number,
+                style: textStyle,
                 decoration: InputDecoration(
                     labelText: '식비',
                     hintText: '식비 e.g. 2000000',
+                    labelStyle: textStyle,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0)
                     )
@@ -62,9 +69,11 @@ class _RichAppState extends State<RichAppPage>{
               padding : EdgeInsets.only(top:_minimumPadding , bottom: _minimumPadding),
               child: TextField(
                 keyboardType: TextInputType.number,
+                style: textStyle,
                 decoration: InputDecoration(
                     labelText: '생활비',
                     hintText: '생활비( 차량유지비, 통신비 .. ) e.g. 2000000',
+                    labelStyle: textStyle,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0)
                     )
@@ -75,9 +84,11 @@ class _RichAppState extends State<RichAppPage>{
               padding : EdgeInsets.only(top:_minimumPadding , bottom: _minimumPadding),
               child: TextField(
                 keyboardType: TextInputType.number,
+                style: textStyle,
                 decoration: InputDecoration(
                     labelText: '여가생활비',
                     hintText: '여가생활비 e.g. 2000000',
+                    labelStyle: textStyle,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0)
                     )
@@ -104,6 +115,10 @@ class _RichAppState extends State<RichAppPage>{
                     ),
                   ],
                 )
+            ),
+            Padding(
+              padding : EdgeInsets.only(top:_minimumPadding , bottom: _minimumPadding),
+              child: Text('값'),
             )
           ],
         ),
