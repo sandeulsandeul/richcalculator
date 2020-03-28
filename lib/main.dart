@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:firebase_admob/firebase_admob.dart';
 //앱 시작 부분
 void main() => runApp(RichApp());
+
+const String testDevice ='YOUR_DEVICE_ID';
 
 //시작 클래스 머티리얼 디자인 앱 생성
 class RichApp extends StatelessWidget {
@@ -20,6 +22,55 @@ class RichAppPage extends StatefulWidget{
 }
 class _RichAppState extends State<RichAppPage>{
   // padding 값 설정
+  static const MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+    testDevices: testDevice != null ? <String>[testDevice] : null,
+    keywords: <String>['economy', 'mario'],
+    nonPersonalizedAds: true,
+  );
+
+  BannerAd _bannerAd;
+  InterstitialAd _interstitialAd;
+
+  BannerAd createBannerAd(){
+    return BannerAd(
+      adUnitId: BannerAd.testAdUnitId,
+      size: AdSize.banner,
+      targetingInfo: targetingInfo,
+      listener: (MobileAdEvent event) {
+        print("BannerAd event $event");
+      },
+    );
+  }
+  InterstitialAd createInterstitialAd() {
+    return InterstitialAd(
+      adUnitId: InterstitialAd.testAdUnitId,
+      targetingInfo: targetingInfo,
+      listener: (MobileAdEvent event) {
+        print("InterstitialAd event $event");
+      },
+    );
+  }
+  @override
+  void initState() {
+    super.initState();
+    FirebaseAdMob.instance.initialize(
+        appId: FirebaseAdMob.testAppId
+    );
+    _bannerAd = createBannerAd()..load();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _bannerAd?.dispose();
+    _interstitialAd?.dispose();
+    _housingcostController.dispose();
+    _foodcostController.dispose();
+    _diginitycostController.dispose();
+    _leisurecostController.dispose();
+    super.dispose();
+  }
+
   final _minimumPadding = 5.0;
   // 값을 가져오는 각 컨트롤러 인스턴스를 준비
   final _housingcostController = TextEditingController();
@@ -29,15 +80,7 @@ class _RichAppState extends State<RichAppPage>{
 
   get textStyle => null;
 
-  @override
-  // 사용이 끝난 컨틀롤러와 인스턴스는 화면 종료시 해제
-  void dispose(){
-    _housingcostController.dispose();
-    _foodcostController.dispose();
-    _diginitycostController.dispose();
-    _leisurecostController.dispose();
-    super.dispose();
-  }
+
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
 
@@ -147,6 +190,10 @@ class _RichAppState extends State<RichAppPage>{
                             child: RaisedButton(
                               child: Text('계산하기'),
                               onPressed: (){
+                                _bannerAd ??= createBannerAd();
+                                _bannerAd
+                                  ..load()
+                                  ..show();
                                 if(_formKey.currentState.validate()) {
                                   Navigator.push(context, MaterialPageRoute(
                                       builder: (context) => RichCalculatorResult(
