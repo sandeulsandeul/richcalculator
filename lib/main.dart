@@ -1,22 +1,103 @@
 import 'package:flutter/material.dart';
 
 //앱 시작 부분
-void main() => runApp(MyApp());
+void main() => runApp(RichApp());
 
 //시작 클래스 머티리얼 디자인 앱 생성
-class MyApp extends StatelessWidget { //정적인 화면을 가지는 어플리케이션
+class RichApp extends StatefulWidget {
+  @override
+  _RichAppState createState() => _RichAppState();
+}
+
+class _RichAppState extends State<RichApp>{
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(
+          title :Text('라이프스타일 계산기'),
       ),
-      home: MyCustomForm(), //표시할 화면의 인스턴스
+      body: Padding( 
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: <Widget>[
+            TextField(
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: '주거 비용',
+                hintText: '주거 비용 e.g. 1000000',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5.0)
+                )
+              ),
+            ),
+            TextField(
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                  labelText: '식비',
+                  hintText: '식비 e.g. 1000000',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0)
+                  )
+              ),
+            ),
+            TextField(
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                  labelText: '차량 유지 비용',
+                  hintText: '차량 유지 비용 e.g. 1000000',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0)
+                  )
+              ),
+            ),
+            TextField(
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                  labelText: '쇼핑 비용',
+                  hintText: '쇼핑 비용 e.g. 1000000',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0)
+                  )
+              ),
+            ),
+            TextField(
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                  labelText: '여행 비용',
+                  hintText: '여행 비용 e.g. 1000000',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0)
+                  )
+              ),
+            ),
+            TextField(
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                  labelText: '여가생활 비용',
+                  hintText: '여가생활 비용 e.g. 1000000',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0)
+                  )
+              ),
+            ),
+            TextField(
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                  labelText: '용돈',
+                  hintText: '용돈 e.g. 1000000',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0)
+                  )
+              ),
+            ),
+          ],
+        ),
+      )
     );
   }
 }
-
+/*
 // 시작하는 클래스가 실제로 표시한는 클래스, 카운터 앱 화면
 class MyCustomForm extends StatefulWidget{
   @override
@@ -27,43 +108,27 @@ class MyCustomForm extends StatefulWidget{
 class _MyCustomFormState extends State<MyCustomForm>{
   //Textfield의 현재값을 얻는 데 필요
   final myController = TextEditingController();
-
-  void initState(){
-    super.initState();
-    //myController가 연결된 두번쟤 Textfield 위젯의 값이
-    // 변경될 때마다 addListener 메서드를 사용해 _printLatestValue수행
-    myController.addListener(_printLatestValue);
-  }
-
-  void dispose(){
-    // 화면이 조요될 때는 반드시 위젯 트리에서 컨트롤러를 해제
-    myController.dispose();
-    super.dispose();
-  }
-  _printLatestValue(){
-    print("두 번째 textfield :${myController.text}");
-  }
+  final myController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold( //머티리얼 디자인 기본 뼈대 위젯
       appBar: AppBar( // 상단 App Bar
-        title: Text("Text Input 연습"),
+        title: Text("부자되는 계산기"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body:
         child: Column(
           children: <Widget>[
+            Text("모든 금액은 1달 기준으로 입력해주세요"),
             TextField(
-              onChanged: (text){ //텍스트 변경 이벤트 감지
+              controller: myController,
+              onChanged: (num){ //텍스트 변경 이벤트 감지
                 print("첫 번째 textfield:$text");
               },
             ),
             TextField(
-              controller: myController,
-              // 컨트롤러  프로퍼티에 컨트롤러 변수를 설정하여
-              // myControllerfmf xhdgotj TextField 인스턴스의 값을 얻거나 변경된 값을 모니터링 할 수 있다.
+
             ),
           ],
         ),
@@ -71,3 +136,4 @@ class _MyCustomFormState extends State<MyCustomForm>{
     );
   }
 }
+*/
