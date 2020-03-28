@@ -51,120 +51,122 @@ class _RichAppState extends State<RichAppPage>{
         margin: EdgeInsets.all(_minimumPadding *2),
         child: Form(
           key : _formKey,
-          child: Column(
-            children: <Widget>[
-              getImageAsset(),
-              Padding(
-                padding : EdgeInsets.only(top:_minimumPadding , bottom: _minimumPadding),
-                child: TextFormField(
-                  keyboardType: TextInputType.number,
-                  style: textStyle,
-                  controller: _housingcostController,
-                  validator: (value){
-                    if(value.trim().isEmpty){
-                      return '입력하세요';
-                    }
-                  },
-                  decoration: InputDecoration(
-                      labelText: '주거비',
-                      hintText: '주거비 e.g. 2000000',
-                      labelStyle: textStyle,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0)
-                      )
-                  ),
-                ),
-              ), // 주거비
-              Padding(
-                padding : EdgeInsets.only(top:_minimumPadding , bottom: _minimumPadding),
-                child: TextFormField(
-                  keyboardType: TextInputType.number,
-                  style: textStyle,
-                  controller: _foodcostController,
-                  validator: (value){
-                    if(value.trim().isEmpty){
-                      return '입력하세요';
-                    }
-                  },
-                  decoration: InputDecoration(
-                      labelText: '식비',
-                      hintText: '식비 e.g. 2000000',
-                      labelStyle: textStyle,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0)
-                      )
-                  ),
-                ),
-              ), //식비
-              Padding(
-                padding : EdgeInsets.only(top:_minimumPadding , bottom: _minimumPadding),
-                child: TextFormField(
-                  keyboardType: TextInputType.number,
-                  style: textStyle,
-                  controller: _diginitycostController,
-                  validator: (value){
-                    if(value.trim().isEmpty){
-                      return '입력하세요';
-                    }
-                  },
-                  decoration: InputDecoration(
-                      labelText: '품위유지비',
-                      hintText: '품위유지비( 차량유지비, 통신비 .. ) e.g. 2000000',
-                      labelStyle: textStyle,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0)
-                      )
-                  ),
-                ),
-              ),//품위유지비
-              Padding(
-                padding : EdgeInsets.only(top:_minimumPadding , bottom: _minimumPadding),
-                child: TextFormField(
-                  keyboardType: TextInputType.number,
-                  style: textStyle,
-                  controller: _leisurecostController,
-                  validator: (value){
-                    if(value.trim().isEmpty){
-                      return '입력하세요';
-                    }
-                  },
-                  decoration: InputDecoration(
-                      labelText: '여가생활비',
-                      hintText: '여가생활비 e.g. 2000000',
-                      labelStyle: textStyle,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0)
-                      )
-                  ),
-                ),
-              ),//여가생활비
-              Padding(
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                getImageAsset(),
+                Padding(
                   padding : EdgeInsets.only(top:_minimumPadding , bottom: _minimumPadding),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                          child: RaisedButton(
-                            child: Text('계산하기'),
-                            onPressed: (){
-                              if(_formKey.currentState.validate()) {
+                  child: TextFormField(
+                    keyboardType: TextInputType.number,
+                    style: textStyle,
+                    controller: _housingcostController,
+                    validator: (value){
+                      if(value.trim().isEmpty){
+                        return '입력하세요';
+                      }
+                    },
+                    decoration: InputDecoration(
+                        labelText: '주거비',
+                        hintText: '주거비 e.g. 2000000',
+                        labelStyle: textStyle,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0)
+                        )
+                    ),
+                  ),
+                ), // 주거비
+                Padding(
+                  padding : EdgeInsets.only(top:_minimumPadding , bottom: _minimumPadding),
+                  child: TextFormField(
+                    keyboardType: TextInputType.number,
+                    style: textStyle,
+                    controller: _foodcostController,
+                    validator: (value){
+                      if(value.trim().isEmpty){
+                        return '입력하세요';
+                      }
+                    },
+                    decoration: InputDecoration(
+                        labelText: '식비',
+                        hintText: '식비 e.g. 2000000',
+                        labelStyle: textStyle,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0)
+                        )
+                    ),
+                  ),
+                ), //식비
+                Padding(
+                  padding : EdgeInsets.only(top:_minimumPadding , bottom: _minimumPadding),
+                  child: TextFormField(
+                    keyboardType: TextInputType.number,
+                    style: textStyle,
+                    controller: _diginitycostController,
+                    validator: (value){
+                      if(value.trim().isEmpty){
+                        return '입력하세요';
+                      }
+                    },
+                    decoration: InputDecoration(
+                        labelText: '품위유지비',
+                        hintText: '품위유지비( 차량유지비, 통신비 .. ) e.g. 2000000',
+                        labelStyle: textStyle,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0)
+                        )
+                    ),
+                  ),
+                ),//품위유지비
+                Padding(
+                  padding : EdgeInsets.only(top:_minimumPadding , bottom: _minimumPadding),
+                  child: TextFormField(
+                    keyboardType: TextInputType.number,
+                    style: textStyle,
+                    controller: _leisurecostController,
+                    validator: (value){
+                      if(value.trim().isEmpty){
+                        return '입력하세요';
+                      }
+                    },
+                    decoration: InputDecoration(
+                        labelText: '여가생활비',
+                        hintText: '여가생활비 e.g. 2000000',
+                        labelStyle: textStyle,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0)
+                        )
+                    ),
+                  ),
+                ),//여가생활비
+                Padding(
+                    padding : EdgeInsets.only(top:_minimumPadding , bottom: _minimumPadding),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                            child: RaisedButton(
+                              child: Text('계산하기'),
+                              onPressed: (){
+                                if(_formKey.currentState.validate()) {
                                   Navigator.push(context, MaterialPageRoute(
                                       builder: (context) => RichCalculatorResult(
-                                        double.parse(_housingcostController.text.trim()),
-                                        double.parse(_foodcostController.text.trim()),
-                                        double.parse(_diginitycostController.text.trim()),
-                                        double.parse(_leisurecostController.text.trim())
+                                          double.parse(_housingcostController.text.trim()),
+                                          double.parse(_foodcostController.text.trim()),
+                                          double.parse(_diginitycostController.text.trim()),
+                                          double.parse(_leisurecostController.text.trim())
                                       )
-                                    ),
+                                  ),
                                   );
-                              }
-                            },
-                          )
-                      ),
-                    ],
-                  )
-              ), //버튼
-            ],
-          ),
+                                }
+                              },
+                            )
+                        ),
+                      ],
+                    )
+                ), //버튼
+              ],
+            ),
+          )
         )
       ),
     );
@@ -191,7 +193,7 @@ class RichCalculatorResult extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    final result = (housingcost+foodcost+diginitycost+leisurecost)*12*1.622723;
+    final result = (housingcost+foodcost+diginitycost+leisurecost)*12*1.622723 .round();
 
     return Scaffold(
       appBar: AppBar(
@@ -201,14 +203,37 @@ class RichCalculatorResult extends StatelessWidget{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-
+            Text(
+              '물가 상승률 2%를 가정하고,',
+                style: TextStyle(fontSize: 30),
+            ),
+            Text(
+                  ' 노후자산 인출 4% Rule',
+              style: TextStyle(fontSize: 20),
+            ),Text(
+                  ' 을 적용할 경우에',
+              style: TextStyle(fontSize: 20),
+            ),Text(
+                  ' 당신의 은퇴 후 ',
+              style: TextStyle(fontSize: 20),
+            ),Text(
+              ' 30년 을 위해서는 ',
+              style: TextStyle(fontSize: 20),
+            ),Text(
+              ' $result 원 ',
+              style: TextStyle(fontSize: 50),
+            ),
+            Text(
+              ' 이 필요합니다. ',
+              style: TextStyle(fontSize: 20),
+            ),
             SizedBox(
                height: 16,
             )
           ],
         ),
       ),
-    )
+    );
   }
 }
 
